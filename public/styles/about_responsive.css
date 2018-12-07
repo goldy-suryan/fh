@@ -196,6 +196,11 @@
 	.stats_last {
 		display: none;
 	}
+	.intro_image {
+		position: relative;
+		right: auto;
+		top: auto;
+	}
 }
 
 
@@ -337,6 +342,11 @@
 	.footer_about_text {
 		font-size: 13px;
 	}
+	.intro_image {
+		position: relative;
+		right: auto;
+		top: auto;
+	}
 }
 
 
@@ -368,6 +378,11 @@
 	.milestone_counter {
 		font-size: 36px;
 	}
+	.intro_image {
+		position: relative;
+		right: auto;
+		top: auto;
+	}
 }
 
 
@@ -375,4 +390,10 @@
 14. 400px
 ************/
 
-@media only screen and (max-width: 400px) {}
+@media only screen and (max-width: 400px) {
+	.intro_image {
+		position: relative!important;
+		right: auto;
+		top: auto;
+	}
+}
