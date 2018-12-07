@@ -3,12 +3,8 @@ var app = express();
 var bodyParser = require("body-parser");
 var mongodb = require("mongodb").MongoClient;
 var mongoose = require("mongoose");
-var nav = [
-  { Text: "Books", Title: "books" },
-  { Text: "Authors", Title: "author" }
-];
-const homeRoute = require("./routes/home.route")(nav);
-var port = process.env.PORT || 3000;
+const homeRoute = require("./routes/home.route");
+var port = process.env.PORT || 8000;
 
 // Middlewares
 app.use(express.static("public"));
@@ -19,9 +15,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Routes
-app.use(homeRoute);
-app.get("/", (req, res) => {
-  res.render("home");
+app.use("/", homeRoute);
+
+app.get("/about", (req, res) => {
+  res.render("about");
 });
 
 // Server

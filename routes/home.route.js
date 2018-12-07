@@ -1,22 +1,14 @@
 const express = require("express"),
-  homeRoute = express.Router();
+  homeRoute = express.Router(),
+  variables = require("../variables");
 
-var route = function(nav) {
-  homeRoute.route("/").get(function(req, res) {
-    // var url = "mongodb://localhost:27017/books";
-    // mongodb.connect(
-    //   url,
-    //   function(err, db) {
-    //     var collection = db.collection("list");
-    //     collection.insertMany(books, function(err, results) {
-    //       res.json(results);
-    //     });
-    //   }
-    // );
-    res.render("home", { nav });
+homeRoute.get("/", (req, res) => {
+  res.render("index", {
+    intro: variables.intro,
+    cta: variables.cta,
+    offers: variables.offers,
+    testimonials: variables.testimonials
   });
+});
 
-  return homeRoute;
-};
-
-module.exports = route;
+module.exports = homeRoute;

@@ -1,0 +1,222 @@
+<%-include('./shared/link')%>
+<body>
+    <div class="super_container">
+        <%-include('./shared/header')%>
+        <div class="home">
+            <%-include('./shared/slider')%>
+        </div>
+
+        <div class="intro">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h2 class="intro_title text-center">We have the best tours</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-10 offset-lg-1">
+                        <div class="intro_text text-center">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec. </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row intro_items">
+
+                    <!-- Intro Item -->
+                    <%for(var i = 0; i < intro.length; i++){%>
+                    <div class="col-lg-4 intro_col">
+                        <div class="intro_item">
+                            <div class="intro_item_overlay"></div>
+                            <div class="intro_item_background" style="background-image:url(images/<%=intro[i].url%>.jpg)"></div>
+                            <div class="intro_item_content d-flex flex-column align-items-center justify-content-center">
+                                <div class="intro_date"><%=intro[i].date%></div>
+                                <div class="button intro_button"><div class="button_bcg"></div><a href="#">see more<span></span><span></span><span></span></a></div>
+                                <div class="intro_center text-center">
+                                    <h1><%=intro[i].title%></h1>
+                                    <div class="intro_price">From <%=intro[i].price%></div>
+                                    <div class="rating rating_4">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <%}%>
+
+                </div>
+            </div>
+	    </div>
+
+        <div class="cta">
+            <div class="cta_background" style="background-image:url(images/cta.jpg)"></div>
+            
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+
+                        <!-- CTA Slider -->
+
+                        <div class="cta_slider_container">
+                            <div class="owl-carousel owl-theme cta_slider">
+
+                                <!-- CTA Slider Item -->
+                                <%for(var i = 0; i < cta.length; i++){%>
+                                <div class="owl-item cta_item text-center">
+                                    <div class="cta_title"><%=cta[i].location%> deluxe package</div>
+                                    <div class="rating_r rating_r_4">
+                                        <i></i>
+                                        <i></i>
+                                        <i></i>
+                                        <i></i>
+                                        <i></i>
+                                    </div>
+                                    <p class="cta_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec. Proin bibendum, augue faucibus tincidunt ultrices, tortor augue gravida lectus, et efficitur enim justo vel ligula.</p>
+                                    <div class="button cta_button"><div class="button_bcg"></div><a href="#">book now<span></span><span></span><span></span></a></div>
+                                </div>
+                                <%}%>
+                                
+                            </div>
+
+                            <!-- CTA Slider Nav - Prev -->
+                            <%-include('./shared/slider-prev')%>
+                            
+                            <!-- CTA Slider Nav - Next -->
+                            <%-include('./shared/slider-next')%>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+	    </div>
+
+        <div class="offers">
+            <div class="container">
+                <div class="row">
+                    <div class="col text-center">
+                        <h2 class="section_title">the best offers with rooms</h2>
+                    </div>
+                </div>
+                <div class="row offers_items">
+
+                    <!-- Offers Item -->
+                    <%for(var i = 0; i < offers.length; i++){%>
+                    <div class="col-lg-6 offers_col">
+                        <div class="offers_item">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="offers_image_container">
+                                        <div class="offers_image_background" style="background-image:url(images/<%=offers[i].url%>.jpg)"></div>
+                                        <div class="offer_name"><a href="#"><%=offers[i].title%></a></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="offers_content">
+                                        <div class="offers_price"><%=offers[i].price%><span>per night</span></div>
+                                        <div class="rating_r rating_r_4 offers_rating">
+                                            <i></i>
+                                            <i></i>
+                                            <i></i>
+                                            <i></i>
+                                            <i></i>
+                                        </div>
+                                        <p class="offers_text">Suspendisse potenti. In faucibus massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu convallis tortor.</p>
+                                        <div class="offers_icons">
+                                            <ul class="offers_icons_list">
+                                                <li class="offers_icons_item"><img src="images/post.png" alt=""></li>
+                                                <li class="offers_icons_item"><img src="images/compass.png" alt=""></li>
+                                                <li class="offers_icons_item"><img src="images/bicycle.png" alt=""></li>
+                                                <li class="offers_icons_item"><img src="images/sailboat.png" alt=""></li>
+                                            </ul>
+                                        </div>
+                                        <div class="offers_link"><a href="offers.html">read more</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <%}%>
+
+                </div>
+            </div>
+	    </div>
+
+        <div class="testimonials">
+            <div class="test_border"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col text-center">
+                            <h2 class="section_title">what our clients say about us</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            
+                            <!-- Testimonials Slider -->
+
+                            <div class="test_slider_container">
+                                <div class="owl-carousel owl-theme test_slider">
+                                    <!-- Testimonial Item -->
+                                    <%for(var i = 0; i < testimonials.length; i++) {%>
+                                    <div class="owl-item">
+                                        <div class="test_item">
+                                            <div class="test_image"><img src="images/<%=testimonials[i].url%>.jpg" alt="<%=testimonials[i].url%>" style="object-fit: cover;"></div>
+                                            <div class="test_icon"><img src="images/<%=testimonials[i].image%>.png" alt=""></div>
+                                            <div class="test_content_container">
+                                                <div class="test_content">
+                                                    <div class="test_item_info">
+                                                        <div class="test_name"><%=testimonials[i].name%></div>
+                                                        <div class="test_date">May 24, 2017</div>
+                                                    </div>
+                                                    <div class="test_quote_title">" <%=testimonials[i].title%> "</div>
+                                                    <p class="test_quote_text">Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <%}%>
+                                </div>
+
+                                <%-include('./shared/slider-prev')%>
+                                
+                                <%-include('./shared/slider-next')%>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact">
+            <div class="contact_background" style="background-image:url(images/contact.png)"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="contact_image">
+                            
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="contact_form_container">
+                            <div class="contact_title">get in touch</div>
+                            <form action="#" id="contact_form" class="contact_form">
+                                <input type="text" id="contact_form_name" class="contact_form_name input_field" placeholder="Name" required="required" data-error="Name is required.">
+                                <input type="text" id="contact_form_email" class="contact_form_email input_field" placeholder="E-mail" required="required" data-error="Email is required.">
+                                <input type="text" id="contact_form_subject" class="contact_form_subject input_field" placeholder="Subject" required="required" data-error="Subject is required.">
+                                <textarea id="contact_form_message" class="text_field contact_form_message" name="message" rows="4" placeholder="Message" required="required" data-error="Please, write us a message."></textarea>
+                                <button type="submit" id="form_submit_button" class="form_submit_button button">send message<span></span><span></span><span></span></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <%-include('./shared/footer')%>
+	</div>
+<%-include('./shared/script')%>
