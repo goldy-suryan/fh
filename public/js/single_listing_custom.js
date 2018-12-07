@@ -11,8 +11,6 @@
 5. Init More Options
 6. Init Listing Slider
 7. Init Lightbox
-8. Init Google Map
-9. Init Search Form
 
 
 ******************************/
@@ -50,8 +48,6 @@ $(document).ready(function()
 	initMoreOptions();
 	initListingSlider();
 	initLightbox();
-	initGoogleMap();
-	initSearchForm();
 
 	/* 
 
@@ -266,94 +262,6 @@ $(document).ready(function()
 			{
 				rel:'colorbox'
 			});
-		}
-	}
-
-	/* 
-
-	8. Init Google Map
-
-	*/
-
-	function initGoogleMap()
-	{
-		var myLatlng = new google.maps.LatLng(36.132229, -5.351153);
-    	var mapOptions = 
-    	{
-    		center: myLatlng,
-	       	zoom: 17,
-			mapTypeId: google.maps.MapTypeId.ROADMAP,
-			draggable: true,
-			scrollwheel: false,
-			zoomControl: true,
-			zoomControlOptions:
-			{
-				position: google.maps.ControlPosition.RIGHT_CENTER
-			},
-			mapTypeControl: false,
-			scaleControl: false,
-			streetViewControl: false,
-			rotateControl: false,
-			fullscreenControl: true,
-			styles:[]
-    	}
-
-    	// Initialize a map with options
-    	map = new google.maps.Map(document.getElementById('map'), mapOptions);
-   
-		// Re-center map after window resize
-		google.maps.event.addDomListener(window, 'resize', function()
-		{
-			setTimeout(function()
-			{
-				google.maps.event.trigger(map, "resize");
-				map.setCenter(myLatlng);
-			}, 1400);
-		});
-	}
-
-	/* 
-
-	9. Init Search Form
-
-	*/
-
-	function initSearchForm()
-	{
-		if($('.search_form').length)
-		{
-			var searchForm = $('.search_form');
-			var searchInput = $('.search_content_input');
-			var searchButton = $('.content_search');
-
-			searchButton.on('click', function(event)
-			{
-				event.stopPropagation();
-
-				if(!searchActive)
-				{
-					searchForm.addClass('active');
-					searchActive = true;
-
-					$(document).one('click', function closeForm(e)
-					{
-						if($(e.target).hasClass('search_content_input'))
-						{
-							$(document).one('click', closeForm);
-						}
-						else
-						{
-							searchForm.removeClass('active');
-							searchActive = false;
-						}
-					});
-				}
-				else
-				{
-					searchForm.removeClass('active');
-					searchActive = false;
-				}
-			});	
 		}
 	}
 });

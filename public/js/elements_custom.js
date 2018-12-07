@@ -49,7 +49,6 @@ $(document).ready(function()
 	initAccordions();
 	initMilestones();
 	initLoaders();
-	initSearchForm();
 
 	/* 
 
@@ -367,51 +366,6 @@ $(document).ready(function()
 		    	})
 			    .addTo(ctrl);
 			});
-		}
-	}
-
-	/* 
-
-	8. Init Search Form
-
-	*/
-
-	function initSearchForm()
-	{
-		if($('.search_form').length)
-		{
-			var searchForm = $('.search_form');
-			var searchInput = $('.search_content_input');
-			var searchButton = $('.content_search');
-
-			searchButton.on('click', function(event)
-			{
-				event.stopPropagation();
-
-				if(!searchActive)
-				{
-					searchForm.addClass('active');
-					searchActive = true;
-
-					$(document).one('click', function closeForm(e)
-					{
-						if($(e.target).hasClass('search_content_input'))
-						{
-							$(document).one('click', closeForm);
-						}
-						else
-						{
-							searchForm.removeClass('active');
-							searchActive = false;
-						}
-					});
-				}
-				else
-				{
-					searchForm.removeClass('active');
-					searchActive = false;
-				}
-			});	
 		}
 	}
 });

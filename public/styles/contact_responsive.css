@@ -230,10 +230,6 @@
 		padding-left: 36px;
 		padding-right: 36px;
 	}
-	.logo a img
-	{
-		width: 24px;
-	}
 	.logo a
 	{
 		font-size: 24px;
@@ -281,11 +277,6 @@
 	.logo a
 	{
 		font-size: 16px;
-	}
-	.logo a img
-	{
-		width: 16px;
-		margin-right: 7px;
 	}
 	.hamburger i
 	{
@@ -356,10 +347,6 @@
 	.about_social_item a i
 	{
 		font-size: 18px;
-	}
-	.google_map
-	{
-		height: 75vh;
 	}
 	.footer_about
 	{

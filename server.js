@@ -21,6 +21,10 @@ app.get("/about", (req, res) => {
   res.render("about");
 });
 
+app.get("/contact", (req, res) => {
+  res.render("contact");
+});
+
 // Server
 app.listen(port || process.evn.PORT, function(err) {
   console.log("http://localhost:" + port + "/");
