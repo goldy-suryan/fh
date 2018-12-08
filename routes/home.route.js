@@ -6,7 +6,7 @@ homeRoute.get("/", (req, res) => {
   res.render("index", {
     intro: variables.intro,
     cta: variables.cta,
-    offers: variables.offers,
+    offers: variables.indexOffers,
     testimonials: variables.testimonials
   });
 });
