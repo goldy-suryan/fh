@@ -3,6 +3,8 @@ var app = express();
 var bodyParser = require("body-parser");
 var mongodb = require("mongodb").MongoClient;
 var mongoose = require("mongoose");
+const path = require("path");
+const favicon = require("serve-favicon");
 const homeRoute = require("./routes/home.route");
 const offerRoute = require("./routes/offer.route");
 const galleryRoute = require("./routes/gallery.route");
@@ -12,6 +14,7 @@ var port = process.env.PORT || 8000;
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 app.set("views", "./views");
+app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
