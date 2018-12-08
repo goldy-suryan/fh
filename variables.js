@@ -62,5 +62,27 @@ const testimonials = [
     image: "kayak"
   }
 ];
-
-module.exports = { intro, cta, offers, testimonials };
+const gallery = [
+  {
+    url: "intro_1"
+  },
+  {
+    url: "intro_2"
+  },
+  {
+    url: "rajasthan"
+  },
+  {
+    url: "assam"
+  },
+  {
+    url: "haridwar"
+  },
+  {
+    url: "jaipur"
+  },
+  {
+    url: "ladakh"
+  }
+];
+module.exports = { intro, cta, offers, testimonials, gallery };
