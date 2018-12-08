@@ -166,7 +166,7 @@
 	}
 	.offers_sorting_container
 	{
-		margin-top: 105px;
+		margin-top: 3em;
 	}
 }
 
@@ -216,6 +216,7 @@
 	.offers_sorting > li
 	{
 		margin-bottom: 17px;
+		width: 100%;
 	}
 	.footer_blog_content
 	{
