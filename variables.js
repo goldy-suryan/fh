@@ -22,9 +22,9 @@ const intro = [
   }
 ];
 const cta = [
-  { location: "kerela" },
+  { location: "Jim Corbett Park" },
   { location: "Kashmir" },
-  { location: "Khandala" }
+  { location: "Goa" }
 ];
 const indexOffers = [
   {
