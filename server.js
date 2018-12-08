@@ -4,6 +4,7 @@ var bodyParser = require("body-parser");
 var mongodb = require("mongodb").MongoClient;
 var mongoose = require("mongoose");
 const homeRoute = require("./routes/home.route");
+const offerRoute = require("./routes/offer.route");
 var port = process.env.PORT || 8000;
 
 // Middlewares
@@ -23,6 +24,12 @@ app.get("/about", (req, res) => {
 
 app.get("/contact", (req, res) => {
   res.render("contact");
+});
+
+app.use("/offers", offerRoute);
+
+app.get("/gallery", (req, res) => {
+  res.render("gallery");
 });
 
 // Server

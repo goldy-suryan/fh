@@ -1,4 +1,6 @@
 <%-include('./shared/link')%>
+</head>
+
 <body>
     <div class="super_container">
         <%-include('./shared/header')%>
@@ -16,7 +18,7 @@
                 <div class="row">
                     <div class="col-lg-10 offset-lg-1">
                         <div class="intro_text text-center">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec. </p>
+                            <p>India with its foggy hill stations, captivating beaches, historical monuments, golden deserts, serene backwaters, pilgrimage sites, rich wildlife, and colourful fairs capture the heart of every tourist and we have all for you...</p>
                         </div>
                     </div>
                 </div>
@@ -30,7 +32,7 @@
                             <div class="intro_item_background" style="background-image:url(images/<%=intro[i].url%>.jpg)"></div>
                             <div class="intro_item_content d-flex flex-column align-items-center justify-content-center">
                                 <div class="intro_date"><%=intro[i].date%></div>
-                                <div class="button intro_button"><div class="button_bcg"></div><a href="#">see more<span></span><span></span><span></span></a></div>
+                                <div class="button intro_button"><div class="button_bcg"></div><a href="/offers">see more<span></span><span></span><span></span></a></div>
                                 <div class="intro_center text-center">
                                     <h1><%=intro[i].title%></h1>
                                     <div class="intro_price">From <%=intro[i].price%></div>
@@ -128,7 +130,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col text-center">
-                        <h2 class="section_title">the best offers with rooms</h2>
+                        <h2 class="section_title">the best offers</h2>
                     </div>
                 </div>
                 <div class="row offers_items">
@@ -163,7 +165,7 @@
                                                 <li class="offers_icons_item"><img src="images/sailboat.png" alt=""></li>
                                             </ul>
                                         </div>
-                                        <div class="offers_link"><a href="offers.html">read more</a></div>
+                                        <div class="offers_link"><a href="/offers">read more</a></div>
                                     </div>
                                 </div>
                             </div>
