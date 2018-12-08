@@ -70,17 +70,17 @@ const offers = [
   },
   {
     url: "manail",
-    price: "6999/-",
+    price: "7500/-",
     title: "Manali",
     person: "person",
     rating: "8.7",
     list: [
-      "03 Nights stay in well appointed rooms.",
-      "Daily Breakfast and Dinner",
-      "Pick Up & Drop manali bus stand",
-      "One Full Day Sightseeing Solang/Snow Point",
-      "Half Day Local Sightseeing Manali",
-      "All transfers and possible sightseeing"
+      "03 Nights 04 Days",
+      "Delhi to Delhi Volvo ticket",
+      "3 Nights stay Manali",
+      "Breakfast and Dinner",
+      "Bus stand pick Up & Drop",
+      "All Sightseeing"
     ]
   },
   {
@@ -99,17 +99,17 @@ const offers = [
   },
   {
     url: "kashmir",
-    price: "12000/-",
-    title: "Kashmir",
+    price: "7000/-",
+    title: "Shimla",
     person: "person",
     rating: "9.2",
     list: [
-      "4 Nights Stay In 3 Star Property",
-      "Non Ac Cabs For Sight Seeing",
-      "2 Days Srinagar",
-      "1 Day Stay At Pahalgam",
-      "Dal Lake Day Trip",
-      "Gulmarg Day Trip"
+      "2 Nights 3 Days",
+      "Delhi to Delhi volvo",
+      "2 Nights stay in Shimla",
+      "Breakfast and Dinner",
+      "Bus stand pick up and drop",
+      "All sightseeing"
     ]
   },
   {
