@@ -17,9 +17,28 @@
 		</div>
 	</div>
 
-    <div class="container">
-        Gallery content will go over here
-    </div>
+            <div class="intro">
+            <div class="container">
+                <div class="row intro_items">
+
+                    <!-- Intro Item -->
+                    <%for(var i = 0; i < intro.length; i++){%>
+                    <div class="col-lg-4 intro_col">
+                        <div class="intro_item">
+                            <!--<div class="intro_item_overlay"></div>-->
+                            <div class="intro_item_background" style="background-image:url(images/<%=intro[i].url%>.jpg)"></div>
+                            <div class="intro_item_content d-flex flex-column align-items-center justify-content-center">
+                                <div class="intro_center text-center">
+                                     <!--<h1><%=intro[i].title%></h1>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <%}%>
+
+                </div>
+            </div>
+	    </div>
 
 
     <%-include('./shared/footer')%>

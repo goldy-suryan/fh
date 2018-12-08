@@ -117,9 +117,10 @@ $(document).ready(function() {
   function initIsotopeFiltering() {
     var sortBtn = $(".sort_btn");
     var filterBtn = $(".filter_btn");
+    var offer_grid = $(".offers_grid");
 
-    if ($(".offers_grid").length) {
-      var grid = $(".offers_grid").isotope({
+    if (offer_grid.length) {
+      var grid = offer_grid.isotope({
         itemSelector: ".offers_item",
         getSortData: {
           price: function(itemElement) {

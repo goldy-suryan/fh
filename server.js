@@ -5,6 +5,7 @@ var mongodb = require("mongodb").MongoClient;
 var mongoose = require("mongoose");
 const homeRoute = require("./routes/home.route");
 const offerRoute = require("./routes/offer.route");
+const galleryRoute = require("./routes/gallery.route");
 var port = process.env.PORT || 8000;
 
 // Middlewares
@@ -27,10 +28,7 @@ app.get("/contact", (req, res) => {
 });
 
 app.use("/offers", offerRoute);
-
-app.get("/gallery", (req, res) => {
-  res.render("gallery");
-});
+app.use("/gallery", galleryRoute);
 
 // Server
 app.listen(port || process.evn.PORT, function(err) {
