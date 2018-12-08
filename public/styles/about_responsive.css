@@ -94,6 +94,9 @@
 	}
 	.hamburger {
 		display: block;
+		position: absolute;
+		right: 1.5em;
+		top: 1.4em;
 	}
 	.intro {
 		padding-top: 71px;
