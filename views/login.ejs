@@ -1,0 +1,62 @@
+<%-include('./shared/link')%>
+<style>
+    form {
+        width: 50%;
+        margin: 5% auto;
+        border: 1px solid #ddd;
+        border-radius: 1em;
+        padding: 5em 3em;
+    }
+    @media only screen and (max-width: 991px) {
+        form {
+        width: 60%;
+        margin: 5% auto;
+        border: 1px solid #ddd;
+        border-radius: 1em;
+        padding: 5em 3em;
+    }
+     @media only screen and (max-width: 767px) {
+        form {
+        width: 80%;
+        margin: 5% auto;
+        border: 1px solid #ddd;
+        border-radius: 1em;
+        padding: 3em 2em;
+    }
+     @media only screen and (max-width: 479px) {
+        form {
+        width: 100%;
+        border: none;
+        padding: 2em 1em;
+    }   
+    }
+</style>
+</head>
+
+<body>
+
+<div class="super_container">
+
+<div class="container">
+
+<form action="/login" method="POST" id="login-form">
+<h2 style="text-align: center; margin-bottom: 2em; ">Login</h2>
+  <div class="form-group">
+    <label for="username">Username:</label>
+    <input type="text" class="form-control" id="username" name="username">
+  </div>
+  <div class="form-group">
+    <label for="pwd">Password:</label>
+    <input type="password" class="form-control" id="pwd" name="password">
+  </div>
+  <button class="btn btn-primary pull-right">Submit</button>
+  <a href="/" class="btn btn-primary pull-right" style="margin-right: 1em;">Back to Home</a>
+</form>
+</div>
+
+</div>
+
+<%-include('./shared/script')%>
+</body>
+
+</html>

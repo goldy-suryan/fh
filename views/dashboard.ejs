@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Fantastic Holiday</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="fantastic holiday dashboard">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<style>
+    .left-part {
+        min-height: 100vh;
+        width: 20%;
+        background-color: rgba(0,0,0,0.95);
+        float: left;
+        color: #fff;
+    }
+    .right-part {
+        width: 80%;
+        min-height: 100vh;
+        padding: 2em;
+        background-color: #ccc;
+        float: left;
+        overflow-y: scroll;
+    }
+    .title {
+        margin-bottom: 2em;
+    }
+    .logo {
+        padding: 2em;
+    }
+    .list ul{
+        list-style: none;
+        padding: 0;
+    }
+    .list ul li {
+        width: 100%;
+    }
+    .list ul li a {
+       color: #fff;
+        padding: 1em;
+        display: inline-block;
+        width: 100%;
+    }
+    .list ul li a:hover {
+        padding-left: 1.5em;
+        text-decoration: none;
+    }
+    .list ul li:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<div class="container-full">
+    <div class="left-part">
+        <div class="logo">
+            <h2>Fantastic Holiday</h2>
+        </div>
+        <div class="list">
+            <ul>
+                <li><a href="/login/dashboard">Bookings</a></li>
+                <li><a href="/login/enquiry">Enquiries</a></li>
+                <!--<li><a href="/login/packages">Add packages</a></li>-->
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="right-part">
+    <div class="container">
+  <h2 class="title">Bookings</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th style="border: none;">Name</th>
+        <th style="border: none;">No. of person</th>
+        <th style="border: none;">Date</th>
+        <th style="border: none;">Phone</th>
+        <th style="border: none;">Address</th>
+
+      </tr>
+    </thead>
+    <tbody>
+    <%for(var i = 0; i < result.length; i++){%>
+      <tr>
+        <td><%=result[i].name%></td>
+        <td><%=result[i].person%></td>
+        <td><%=result[i].date%></td>
+        <td><%=result[i].phone%></td>
+        <td><%=result[i].address%></td>
+        <td><a href="/login/dashboard/<%=result[i]._id%>"><span><i class="fa fa-times" aria-hidden="true"></i></span></a></td>
+      </tr>
+    <%}%>
+    </tbody>
+  </table>
+</div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

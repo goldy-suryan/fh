@@ -4,7 +4,8 @@ const express = require("express"),
 
 offerRoute.get("/", (req, res) => {
   res.render("offers", {
-    offers: variables.offers
+    offers: variables.offers,
+    message: req.flash("booking")
   });
 });
 
