@@ -91,7 +91,7 @@
                                                 <i></i>
                                                 <i></i>
                                             </div> -->
-											<ul>
+											<ul style="margin-top: 1em;">
 											<%for(var j = 0; j < offers[i].list.length; j++){%>
 											<li>* <%=offers[i].list[j]%></li>
 											<%}%>
@@ -121,7 +121,7 @@
 															<input type="number" name="person" id="contact_form_person" class="contact_form_subject input_field" placeholder="No. of people" required="required" data-error="No. of person is required.">
 															<input data-date-format="dd/mm/yyyy" name="date" id="datepicker" class="contact_form_subject input_field" placeholder="Date">
 															<textarea id="contact_form_message" class="text_field contact_form_message" name="address" rows="2" placeholder="Address" required="required" data-error="Please, write us a message."></textarea>
-															<button type="submit" id="form_submit_button" class="form_submit_button button">send message<span></span><span></span><span></span></button>
+															<button type="submit" id="form_submit_button" class="form_submit_button button">Book Now<span></span><span></span><span></span></button>
 														</form>
 													</div>
 													</div>
@@ -157,8 +157,8 @@
 <script src="js/offers_custom.js"></script>
 <script>
 $(document).on("click", ".book_button", function (e) {
-     var myBookId = $(e.currentTarget).data('id');
-	 $('#title').text(myBookId);
+     var title = $(e.currentTarget).data('id');
+	 $('#title').text(title);
 });
 $('#datepicker').datepicker({
 	weekStart: 1,

@@ -15,20 +15,36 @@
         background-color: rgba(0,0,0,0.95);
         float: left;
         color: #fff;
+        transition: all 0.8s;
     }
     .right-part {
-        width: 80%;
+        min-width: 80%;
         min-height: 100vh;
         padding: 2em;
         background-color: #ccc;
         float: left;
-        overflow-y: scroll;
+        transition: all 1s;
+    }
+    .toggle-display {
+        display: none;
+    }
+    .toggle-width {
+        width: 7%;
+    }
+    .toggle-width1 {
+        width: 93%;
     }
     .title {
         margin-bottom: 2em;
     }
     .logo {
         padding: 2em;
+        position: relative;
+    }
+    .toggle {
+        position: absolute;
+        top: 1em;
+        right: 1em;
     }
     .list ul{
         list-style: none;
@@ -54,11 +70,19 @@
 </style>
 </head>
 <body>
-
+<%if(message && message.length){%>
+<div class="alert alert-success alert-dismissible" style="position: absolute; top: 1em; right: 1em; z-index: 1000; width: 30%;">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <%=message%>
+</div>
+<%} else {%>   
+<div></div>
+<%}%>
 <div class="container-full">
     <div class="left-part">
         <div class="logo">
-            <h2>Fantastic Holiday</h2>
+            <h2 class="title-logo">Fantastic Holiday</h2>
+        <span class="toggle"><i class="fa fa-bars"></i></span>
         </div>
         <div class="list">
             <ul>
@@ -102,6 +126,17 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
-
+<script>
+window.setTimeout(function() {
+    $(".alert").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove(); 
+    });
+}, 4000);
+$(document).on("click", ".toggle", function (e) {
+     $(".left-part").toggleClass("toggle-width");
+    $(".right-part").toggleClass("toggle-width1");
+    $(".title-logo").toggleClass("toggle-display");
+});
+</script>
 </body>
 </html>

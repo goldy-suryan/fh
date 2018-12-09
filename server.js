@@ -68,7 +68,7 @@ app.get("/logout", (req, res) => {
   res.clearCookie("auth");
   res.redirect("/login");
 });
-app.get("*", (req, res) => {
+app.use("*", (req, res) => {
   res.render("notFound");
 });
 

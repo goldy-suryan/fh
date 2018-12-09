@@ -7,13 +7,18 @@ const express = require("express"),
   verify = require("../auth/verify");
 
 loginRoute.get("/", (req, res) => {
-  res.render("login");
+  res.render("login", {
+    message: req.flash("message")
+  });
 });
 
 loginRoute.post("/", (req, res) => {
   Users.findOne({ username: req.body.username }, (err, user) => {
     if (err) {
-      res.status(500).json({ error: err });
+      req.flash("message", `error: ${err}`);
+      res.render("login", {
+        message: req.flash("message")
+      });
     }
     if (user) {
       if (user.password === req.body.password) {
@@ -21,14 +26,19 @@ loginRoute.post("/", (req, res) => {
           expiresIn: "1h"
         });
         res.cookie("auth", token);
+        req.flash("message", "Login successful");
         res.redirect("/login/dashboard");
       } else {
-        res.status(401).json({
-          message: req.flash("error", "Unathorized, password doesn't match")
+        req.flash("message", "Unathorized, Password doesn't match");
+        res.render("login", {
+          message: req.flash("message")
         });
       }
     } else {
-      res.redirect(401, "back");
+      req.flash("message", "Unathorized, Username or password doesn't match");
+      res.render("login", {
+        message: req.flash("message")
+      });
     }
   });
 });
@@ -40,7 +50,10 @@ loginRoute.get("/dashboard", verify, (req, res) => {
     if (err) {
       res.status(500).json({ error: err });
     } else {
-      res.render("dashboard", { result });
+      res.render("dashboard", {
+        result: result,
+        message: req.flash("message")
+      });
     }
   });
 });
@@ -51,6 +64,7 @@ loginRoute.get("/dashboard/:id", verify, (req, res) => {
       res.status(500).json({ error: err });
     }
     if (result) {
+      req.flash("message", "Deleted successfully");
       res.redirect("/login/dashboard");
     }
   });
@@ -61,7 +75,10 @@ loginRoute.get("/enquiry", verify, (req, res) => {
     if (err) {
       res.status(500).json({ error: err });
     } else {
-      res.render("dashboard-enquiry", { result });
+      res.render("dashboard-enquiry", {
+        result: result,
+        message: req.flash("message")
+      });
     }
   });
 });
@@ -72,6 +89,7 @@ loginRoute.get("/enquiry/:id", verify, (req, res) => {
       res.status(500).json({ error: err });
     }
     if (result) {
+      req.flash("message", "Deleted successfully");
       res.redirect("/login/enquiry");
     }
   });
