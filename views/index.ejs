@@ -84,7 +84,7 @@
                                         <i></i>
                                         <i></i>
                                     </div>
-                                    <p class="cta_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu convallis tortor. Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec. Proin bibendum, augue faucibus tincidunt ultrices, tortor augue gravida lectus, et efficitur enim justo vel ligula.</p>
+                                    <p class="cta_text"><%=cta[i].text%></p>
                                     <div class="button cta_button"><div class="button_bcg"></div><a href="/offers">Explore<span></span><span></span><span></span></a></div>
                                 </div>
                                 <%}%>
@@ -157,14 +157,18 @@
                                 <div class="col-lg-6">
                                     <div class="offers_content">
                                         <div class="offers_price"><%=offers[i].price%><span>per <%=offers[i].person%></span></div>
-                                        <div class="rating_r rating_r_4 offers_rating">
+                                        <!--<div class="rating_r rating_r_4 offers_rating">
                                             <i></i>
                                             <i></i>
                                             <i></i>
                                             <i></i>
                                             <i></i>
-                                        </div>
-                                        <p class="offers_text">Suspendisse potenti. In faucibus massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eu convallis tortor.</p>
+                                        </div>-->
+                                        <ul style="margin-top: 1em;">
+                                            <%for(var j = 0; j < offers[i].list.length; j++){%>
+                                            <li>* <%=offers[i].list[j]%></li>
+                                            <%}%>
+                                        </ul>
                                         <div class="offers_icons">
                                             <ul class="offers_icons_list">
                                                 <li class="offers_icons_item"><img src="images/post.png" alt=""></li>
