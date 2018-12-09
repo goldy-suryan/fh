@@ -1,10 +1,18 @@
 <%-include('./shared/link')%>
-
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
 <link rel="stylesheet" type="text/css" href="styles/offers_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/offers_responsive.css">
 </head>
 
 <body>
+<%if(message && message.length){%>
+<div class="alert alert-success alert-dismissible" style="position: absolute; top: 1em; right: 1em; z-index: 1000; width: 30%;">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <%=message%>
+</div>
+<%} else {%>   
+<div></div>
+<%}%>
 
 <div class="super_container">
 
@@ -70,7 +78,7 @@
                                     <div class="col-lg-3 col-1680-4">
                                         <div class="offers_image_container">
                                             <div class="offers_image_background" style="background-image:url(images/<%=offers[i].url%>.jpg)"></div>
-                                            <div class="offer_name"><a href="single_listing.html"><%=offers[i].title%></a></div>
+                                            <div class="offer_name"><a href="#"><%=offers[i].title%></a></div>
                                         </div>
                                     </div>
                                     <div class="col-lg-8">
@@ -96,7 +104,30 @@
                                                     <li class="offers_icons_item"><img src="images/sailboat.png" alt=""></li>
                                                 </ul>
                                             </div>
-                                            <div class="button book_button"><a href="#">book<span></span><span></span><span></span></a></div>
+                                            <div class="button book_button" data-toggle="modal" data-target="#myModal" data-id="<%=offers[i].title%>" style="cursor:pointer;"><a>book<span></span><span></span><span></span></a></div>
+											<!--Modal-->
+											<div class="modal" id="myModal">
+												<div class="modal-dialog">
+													<div class="modal-content">
+
+													<!-- Modal body -->
+													<div class="modal-body">
+														<div class="contact_form_container">
+														<span style="color: #fff">Confirm Booking for </span><div class="contact_title" id="title"></div>
+														<form action="/booking" method="POST" id="contact_form" class="contact_form">
+															<input type="text" name="name" id="contact_form_name" class="contact_form_name input_field" placeholder="Name" required="required" data-error="Name is required." style="width:100%;">
+															<!--<input type="text" name="email" id="contact_form_email" class="contact_form_email input_field" placeholder="E-mail" required="required" data-error="Email is required.">-->
+															<input type="number" name="phone" id="contact_form_subject" class="contact_form_subject input_field" placeholder="Phone" required="required" data-error="Subject is required.">
+															<input type="number" name="person" id="contact_form_person" class="contact_form_subject input_field" placeholder="No. of people" required="required" data-error="No. of person is required.">
+															<input data-date-format="dd/mm/yyyy" name="date" id="datepicker" class="contact_form_subject input_field" placeholder="Date">
+															<textarea id="contact_form_message" class="text_field contact_form_message" name="address" rows="2" placeholder="Address" required="required" data-error="Please, write us a message."></textarea>
+															<button type="submit" id="form_submit_button" class="form_submit_button button">send message<span></span><span></span><span></span></button>
+														</form>
+													</div>
+													</div>
+													</div>
+												</div>
+												</div>
                                             <div class="offer_reviews">
                                                 <div class="offer_reviews_content">
                                                     <div class="offer_reviews_title">very good</div>
@@ -121,5 +152,22 @@
 </div>
 
 <%-include('./shared/script')%>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
 <script src="plugins/Isotope/isotope.pkgd.min.js"></script>
 <script src="js/offers_custom.js"></script>
+<script>
+$(document).on("click", ".book_button", function (e) {
+     var myBookId = $(e.currentTarget).data('id');
+	 $('#title').text(myBookId);
+});
+$('#datepicker').datepicker({
+	weekStart: 1,
+	daysOfWeekHighlighted: "6,0",
+	autoclose: true,
+	todayHighlight: true,
+});
+$('#datepicker').datepicker("setDate", new Date());
+</script>
+</body>
+
+</html>

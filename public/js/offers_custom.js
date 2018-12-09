@@ -42,7 +42,6 @@ $(document).ready(function() {
   initMenu();
   initIsotopeFiltering();
   initSearch();
-  initMoreOptions();
 
   /* 
 
@@ -187,34 +186,6 @@ $(document).ready(function() {
         var panels = $(".search_panel");
         panels.removeClass("active");
         $(panels[clickedIndex]).addClass("active");
-      });
-    }
-  }
-
-  /* 
-
-	6. Init More Options
-
-	*/
-
-  function initMoreOptions() {
-    if ($(".more_options").length) {
-      var triggerEle = $(".more_options_trigger");
-      var ele = $(".more_options_list");
-
-      triggerEle.on("click", function(e) {
-        e.preventDefault();
-        triggerEle.toggleClass("active");
-        ele.toggleClass("active");
-
-        var panel = ele;
-        var panelH = ele.prop("scrollHeight") + "px";
-
-        if (panel.css("max-height") == "0px") {
-          panel.css("max-height", panel.prop("scrollHeight") + "px");
-        } else {
-          panel.css("max-height", "0px");
-        }
       });
     }
   }

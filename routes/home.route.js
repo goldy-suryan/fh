@@ -7,7 +7,8 @@ homeRoute.get("/", (req, res) => {
     intro: variables.intro,
     cta: variables.cta,
     offers: variables.indexOffers,
-    testimonials: variables.testimonials
+    testimonials: variables.testimonials,
+    message: req.flash("info")
   });
 });
 
