@@ -15,10 +15,6 @@ bookingRoute.post("/", (req, res) => {
       if (err) {
         res.status(500).json({ error: err });
       } else {
-        // res.status(201).json({
-        //   message: "booking placed successfully",
-        //   data: result
-        // });
         req.flash(
           "booking",
           "Booked successfully, we'll soon get in touch with you"
