@@ -1,8 +1,8 @@
 const intro = [
   {
-    url: "intro_1",
+    url: "kashmir",
     date: "May 25th - June 01st",
-    title: "Goa",
+    title: "Kashmir",
     price: 1450,
     rating: 4
   },
