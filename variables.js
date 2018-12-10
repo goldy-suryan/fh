@@ -217,31 +217,31 @@ const offers = [
 const testimonials = [
   {
     url: "test_1",
-    name: "Anas Khan",
+    name: "Anil",
     title: "Best Holiday",
     image: "backpack"
   },
   {
     url: "test_8",
-    name: "Surender Aggarwal",
+    name: "Arnab Biswas",
     title: "Enjoyed a lot",
     image: "kayak"
   },
   {
     url: "test_3",
-    name: "Arnab Biswas",
+    name: "Surender Aggarwal",
     title: "Best travel agency",
     image: "island_t"
   },
   {
     url: "test_7",
-    name: "Chopra",
+    name: "Rohit",
     title: "Having fun",
     image: "backpack"
   },
   {
     url: "test_5",
-    name: "Rohit",
+    name: "Tarun Aggarwal",
     title: "Enjoyed with fantastic holiday",
     image: "kayak"
   }
@@ -249,9 +249,6 @@ const testimonials = [
 const gallery = [
   {
     url: "intro_1"
-  },
-  {
-    url: "intro_2"
   },
   {
     url: "rajasthan"
@@ -273,6 +270,21 @@ const gallery = [
   },
   {
     url: "meclodganj"
+  },
+  {
+    url: "test_9"
+  },
+  {
+    url: "test_10"
+  },
+  {
+    url: "test_2"
+  },
+  {
+    url: "test_4"
+  },
+  {
+    url: "test_6"
   }
 ];
 module.exports = { intro, cta, offers, indexOffers, testimonials, gallery };
