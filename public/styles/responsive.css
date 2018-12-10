@@ -235,7 +235,8 @@
 		font-size: 24px
 	}
 	.test_item {
-		padding-top: 26px
+		padding-top: 26px;
+		min-height: 400px;
 	}
 	.test_icon {
 		left: 20px;
@@ -303,5 +304,10 @@
 	}
 	.intro_text p {
 		font-size: 16px
+	}
+	.test_item {
+		padding-top: 16px;
+		min-height: 300px;
+		max-height: 350px;
 	}
 }

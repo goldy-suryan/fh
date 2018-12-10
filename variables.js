@@ -40,20 +40,6 @@ const cta = [
 ];
 const indexOffers = [
   {
-    url: "golden",
-    price: "19999/-",
-    title: "Delhi-Agra-Jaipur",
-    person: "couple",
-    list: [
-      "3 Nights Stay In 3 Star Property",
-      "Ac Cabs For Full Trip + Sight Seeing ( Delhi - Agra - Jaipur -Delhi)",
-      "1 Night In Delhi",
-      "1 Night In Agra",
-      "1 Night In Jaipur",
-      "3 Breakfast"
-    ]
-  },
-  {
     url: "nanital",
     price: "7999/-",
     title: "Nanital",
@@ -79,6 +65,20 @@ const indexOffers = [
       "Breakfast and Dinner",
       "Bus stand pick Up & Drop",
       "All Sightseeing"
+    ]
+  },
+  {
+    url: "golden",
+    price: "19999/-",
+    title: "Delhi-Agra-Jaipur",
+    person: "couple",
+    list: [
+      "3 Nights Stay In 3 Star Property",
+      "Ac Cabs For Full Trip + Sight Seeing ( Delhi - Agra - Jaipur -Delhi)",
+      "1 Night In Delhi",
+      "1 Night In Agra",
+      "1 Night In Jaipur",
+      "3 Breakfast"
     ]
   },
   {
@@ -217,30 +217,32 @@ const offers = [
 const testimonials = [
   {
     url: "test_1",
-    name: "Rajesh",
-    date: "Aug 18, 2017",
+    name: "Anas Khan",
     title: "Best Holiday",
     image: "backpack"
   },
   {
-    url: "test_2",
-    name: "Calra",
-    date: "May 30, 2017",
+    url: "test_8",
+    name: "Surender Aggarwal",
     title: "Enjoyed a lot",
     image: "kayak"
   },
   {
     url: "test_3",
-    name: "Dinesh",
-    date: "Jan 13, 2017",
+    name: "Arnab Biswas",
     title: "Best travel agency",
     image: "island_t"
   },
   {
-    url: "test_4",
-    name: "Yogender",
-    date: "Dec 8, 2017",
-    title: "Enjoyed",
+    url: "test_7",
+    name: "Chopra",
+    title: "Having fun",
+    image: "backpack"
+  },
+  {
+    url: "test_5",
+    name: "Rohit",
+    title: "Enjoyed with fantastic holiday",
     image: "kayak"
   }
 ];
