@@ -248,25 +248,10 @@ const testimonials = [
 ];
 const gallery = [
   {
-    url: "intro_1"
-  },
-  {
-    url: "rajasthan"
-  },
-  {
-    url: "assam"
-  },
-  {
-    url: "haridwar"
-  },
-  {
-    url: "jaipur"
-  },
-  {
-    url: "ladakh"
-  },
-  {
     url: "rishikesh"
+  },
+  {
+    url: "gallery5"
   },
   {
     url: "meclodganj"
@@ -285,6 +270,27 @@ const gallery = [
   },
   {
     url: "test_6"
+  },
+  {
+    url: "test_1"
+  },
+  {
+    url: "test_3"
+  },
+  {
+    url: "test_5"
+  },
+  {
+    url: "gallery1"
+  },
+  {
+    url: "gallery2"
+  },
+  {
+    url: "gallery3"
+  },
+  {
+    url: "gallery4"
   }
 ];
 module.exports = { intro, cta, offers, indexOffers, testimonials, gallery };
