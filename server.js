@@ -1,7 +1,8 @@
-var express = require("express");
-var app = express();
-var bodyParser = require("body-parser");
-var mongoose = require("mongoose");
+const express = require("express");
+const app = express();
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+const methodOverride = require("method-override");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
@@ -15,7 +16,7 @@ const contactRoute = require("./routes/contact.route");
 const bookingRoute = require("./routes/booking.route");
 const enquiryRoute = require("./routes/enquiry.route");
 const loginRoute = require("./routes/login.route");
-var port = process.env.PORT || 8000;
+const port = process.env.PORT || 8000;
 const config = require("./config");
 
 // Database connection
@@ -25,7 +26,7 @@ mongoose.connect(
 );
 
 // Middlewares
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
 app.set("views", "./views");
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
@@ -40,7 +41,14 @@ app.use(
   })
 );
 app.use(flash());
-
+app.use(methodOverride("_method"));
+app.use(function(req, res, next) {
+  if (req.query._method == "DELETE") {
+    req.method = "DELETE";
+    req.url = req.path;
+  }
+  next();
+});
 app.disable("x-powered-by");
 app.use((req, res, next) => {
   res.header("Allow-Access-Control-Origin", "*");
