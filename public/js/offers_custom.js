@@ -1,192 +1,90 @@
-/* JS Document */
-
-/******************************
-
-[Table of Contents]
-
-1. Vars and Inits
-2. Set Header
-3. Init Menu
-4. Init Isotope Filtering
-5. Init Search
-6. Init More Options
-7. Init Search Form
-
-
-******************************/
-
 $(document).ready(function() {
   "use strict";
-
-  /* 
-
-	1. Vars and Inits
-
-	*/
-
-  var menu = $(".menu");
-  var menuActive = false;
-  var header = $(".header");
-  var searchActive = false;
-
-  setHeader();
-
-  $(window).on("resize", function() {
-    setHeader();
-  });
-
-  $(document).on("scroll", function() {
-    setHeader();
-  });
-
-  initMenu();
-  initIsotopeFiltering();
-  initSearch();
-
-  /* 
-
-	2. Set Header
-
-	*/
-
-  function setHeader() {
-    if (window.innerWidth < 992) {
-      if ($(window).scrollTop() > 100) {
-        header.addClass("scrolled");
-      } else {
-        header.removeClass("scrolled");
+  var t = $(".menu"),
+    e = !1,
+    n = $(".header");
+  function i() {
+    window.innerWidth,
+      $(window).scrollTop() > 100
+        ? n.addClass("scrolled")
+        : n.removeClass("scrolled"),
+      window.innerWidth > 991 && e && r();
+  }
+  function a() {
+    t.addClass("active"), (e = !0);
+  }
+  function r() {
+    t.removeClass("active"), (e = !1);
+  }
+  i(),
+    $(window).on("resize", function() {
+      i();
+    }),
+    $(document).on("scroll", function() {
+      i();
+    }),
+    (function() {
+      if ($(".hamburger").length && $(".menu").length) {
+        var t = $(".hamburger"),
+          n = $(".menu_close_container");
+        t.on("click", function() {
+          e ? r() : a();
+        }),
+          n.on("click", function() {
+            e ? r() : a();
+          });
       }
-    } else {
-      if ($(window).scrollTop() > 100) {
-        header.addClass("scrolled");
-      } else {
-        header.removeClass("scrolled");
-      }
-    }
-    if (window.innerWidth > 991 && menuActive) {
-      closeMenu();
-    }
-  }
-
-  /* 
-
-	3. Init Menu
-
-	*/
-
-  function initMenu() {
-    if ($(".hamburger").length && $(".menu").length) {
-      var hamb = $(".hamburger");
-      var close = $(".menu_close_container");
-
-      hamb.on("click", function() {
-        if (!menuActive) {
-          openMenu();
-        } else {
-          closeMenu();
-        }
-      });
-
-      close.on("click", function() {
-        if (!menuActive) {
-          openMenu();
-        } else {
-          closeMenu();
-        }
-      });
-    }
-  }
-
-  function openMenu() {
-    menu.addClass("active");
-    menuActive = true;
-  }
-
-  function closeMenu() {
-    menu.removeClass("active");
-    menuActive = false;
-  }
-
-  /* 
-
-	4. Init Isotope Filtering
-
-	*/
-
-  function initIsotopeFiltering() {
-    var sortBtn = $(".sort_btn");
-    var filterBtn = $(".filter_btn");
-    var offer_grid = $(".offers_grid");
-
-    if (offer_grid.length) {
-      var grid = offer_grid.isotope({
-        itemSelector: ".offers_item",
-        getSortData: {
-          price: function(itemElement) {
-            var priceEle = $(itemElement)
-              .find(".offers_price")
-              .text()
-              .replace("$", "");
-            return parseFloat(priceEle);
+    })(),
+    (function() {
+      var t = $(".sort_btn"),
+        e = ($(".filter_btn"), $(".offers_grid"));
+      if (e.length) {
+        var n = e.isotope({
+          itemSelector: ".offers_item",
+          getSortData: {
+            price: function(t) {
+              var e = $(t)
+                .find(".offers_price")
+                .text()
+                .replace("$", "");
+              return parseFloat(e);
+            },
+            name: ".offer_name",
+            stars: function(t) {
+              var e = $(t).find(".offers_rating"),
+                n = e.attr("data-rating");
+              return n;
+            }
           },
-          name: ".offer_name",
-          stars: function(itemElement) {
-            var starsEle = $(itemElement).find(".offers_rating");
-            var stars = starsEle.attr("data-rating");
-            return stars;
-          }
-        },
-        animationOptions: {
-          duration: 750,
-          easing: "linear",
-          queue: false
-        }
-      });
-
-      // Sorting
-      sortBtn.each(function() {
-        $(this).on("click", function() {
-          var parent = $(this)
-            .parent()
-            .parent()
-            .find(".sorting_text");
-          parent.text($(this).text());
-          var option = $(this).attr("data-isotope-option");
-          option = JSON.parse(option);
-          grid.isotope(option);
+          animationOptions: { duration: 750, easing: "linear", queue: !1 }
         });
-      });
-
-      // Filtering
-      $(".filter_btn").on("click", function() {
-        var parent = $(this)
-          .parent()
-          .parent()
-          .find(".sorting_text");
-        parent.text($(this).text());
-        var filterValue = $(this).attr("data-filter");
-        grid.isotope({ filter: filterValue });
-      });
-    }
-  }
-
-  /* 
-
-	5. Init Search
-
-	*/
-
-  function initSearch() {
-    if ($(".search_tab").length) {
+        t.each(function() {
+          $(this).on("click", function() {
+            var t = $(this)
+              .parent()
+              .parent()
+              .find(".sorting_text");
+            t.text($(this).text());
+            var e = $(this).attr("data-isotope-option");
+            (e = JSON.parse(e)), n.isotope(e);
+          });
+        }),
+          $(".filter_btn").on("click", function() {
+            var t = $(this)
+              .parent()
+              .parent()
+              .find(".sorting_text");
+            t.text($(this).text());
+            var e = $(this).attr("data-filter");
+            n.isotope({ filter: e });
+          });
+      }
+    })(),
+    $(".search_tab").length &&
       $(".search_tab").on("click", function() {
-        $(".search_tab").removeClass("active");
-        $(this).addClass("active");
-        var clickedIndex = $(".search_tab").index(this);
-
-        var panels = $(".search_panel");
-        panels.removeClass("active");
-        $(panels[clickedIndex]).addClass("active");
+        $(".search_tab").removeClass("active"), $(this).addClass("active");
+        var t = $(".search_tab").index(this),
+          e = $(".search_panel");
+        e.removeClass("active"), $(e[t]).addClass("active");
       });
-    }
-  }
 });
