@@ -6,7 +6,7 @@ offerRoute.get("/", (req, res) => {
   packages.find((err, result) => {
     if (err) {
       req.flash("message", err);
-      res.redirect(req.headers.referer);
+      res.redirect("/offers");
     }
     if (result) {
       res.render("offers", {

@@ -1,10 +1,19 @@
 const express = require("express"),
   galleryRoute = express.Router(),
-  variables = require("../variables");
+  gallery = require("../models/gallery");
 
 galleryRoute.get("/", (req, res) => {
-  res.render("gallery", {
-    gallery: variables.gallery
+  gallery.find((err, result) => {
+    if (err) {
+      req.flash("message", err);
+      res.redirect("/gallery");
+    }
+    if (result) {
+      res.render("gallery", {
+        message: req.flash("message"),
+        gallery: result
+      });
+    }
   });
 });
 

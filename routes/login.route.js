@@ -5,13 +5,18 @@ const express = require("express"),
   Enquiry = require("../models/enquiry"),
   Users = require("../models/users"),
   Packages = require("../models/packages"),
+  Gallery = require("../models/gallery"),
   verify = require("../auth/verify");
 const multer = require("multer");
 const fs = require("fs");
 const path = require("path");
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
-    cb(null, "public/images/");
+    if (file.fieldname == "galleryImage") {
+      cb(null, "public/images/gallery/");
+    } else {
+      cb(null, "public/images/");
+    }
   },
   filename: function(req, file, cb) {
     cb(null, file.originalname);
@@ -76,7 +81,8 @@ loginRoute.post("/", (req, res) => {
 loginRoute.get("/dashboard", verify, (req, res) => {
   Bookings.find((err, result) => {
     if (err) {
-      res.status(500).json({ error: err });
+      req.flash("message", err);
+      res.redirect("/login/dashboard");
     } else {
       res.render("dashboard", {
         result: result,
@@ -89,7 +95,8 @@ loginRoute.get("/dashboard", verify, (req, res) => {
 loginRoute.delete("/dashboard/:id", verify, (req, res) => {
   Bookings.findByIdAndDelete({ _id: req.params.id }, (err, result) => {
     if (err) {
-      res.status(500).json({ error: err });
+      req.flash("message", err);
+      res.redirect("/login/dashboard");
     }
     if (result) {
       req.flash("message", "Deleted successfully");
@@ -103,7 +110,8 @@ loginRoute.delete("/dashboard/:id", verify, (req, res) => {
 loginRoute.get("/enquiry", verify, (req, res) => {
   Enquiry.find((err, result) => {
     if (err) {
-      res.status(500).json({ error: err });
+      req.flash("message", err);
+      res.redirect("/login/enquiry");
     } else {
       res.render("dashboard-enquiry", {
         result: result,
@@ -116,7 +124,8 @@ loginRoute.get("/enquiry", verify, (req, res) => {
 loginRoute.delete("/enquiry/:id", verify, (req, res) => {
   Enquiry.findByIdAndDelete({ _id: req.params.id }, (err, result) => {
     if (err) {
-      res.status(500).json({ error: err });
+      req.flash("message", err);
+      res.redirect("/login/enquiry");
     }
     if (result) {
       req.flash("message", "Deleted successfully");
@@ -184,6 +193,80 @@ loginRoute.delete("/packages/:id", verify, (req, res) => {
             res.redirect("/login/packages");
           } else {
             res.redirect("/login/packages");
+          }
+        }
+      );
+    }
+  });
+});
+
+// ================LOGIN/GALLERY=====================//
+loginRoute.get("/gallery", verify, (req, res) => {
+  Gallery.find((err, result) => {
+    if (err) {
+      req.flash("message", err);
+      res.redirect("/login/gallery");
+    }
+    if (result) {
+      res.render("dashboard-gallery", {
+        message: req.flash("message"),
+        result: result
+      });
+    }
+  });
+});
+
+loginRoute.post(
+  "/gallery",
+  verify,
+  upload.single("galleryImage"),
+  (req, res) => {
+    const gallery = new Gallery({
+      name: req.body.name
+    });
+    if (req.file && req.file.path) {
+      gallery.image = req.file.originalname;
+    }
+
+    gallery.save((err, result) => {
+      if (err) {
+        req.flash("message", err);
+        res.redirect("/login/gallery");
+      }
+      if (result) {
+        req.flash("message", "Saved successfully");
+        res.redirect("/login/gallery");
+      }
+    });
+  }
+);
+
+loginRoute.delete("/gallery/:id", verify, (req, res) => {
+  Gallery.findOneAndDelete({ _id: req.params.id }, (err, result) => {
+    if (err) {
+      req.flash("message", err);
+      res.redirect("/login/gallery");
+    }
+    if (!result) {
+      req.flash("message", "No image with requested id");
+      res.redirect("/login/gallery");
+    }
+    if (result) {
+      req.flash("message", "Data deleted successfully");
+      fs.unlink(
+        path.join(
+          __dirname,
+          "..",
+          "public",
+          "images",
+          "gallery",
+          `${result.image}`
+        ),
+        err => {
+          if (err) {
+            res.redirect("/login/gallery");
+          } else {
+            res.redirect("/login/gallery");
           }
         }
       );
