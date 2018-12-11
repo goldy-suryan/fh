@@ -6,6 +6,7 @@ const express = require("express"),
   Users = require("../models/users"),
   Packages = require("../models/packages"),
   Gallery = require("../models/gallery"),
+  Client = require("../models/clients"),
   verify = require("../auth/verify");
 const multer = require("multer");
 const fs = require("fs");
@@ -14,6 +15,8 @@ const storage = multer.diskStorage({
   destination: function(req, file, cb) {
     if (file.fieldname == "galleryImage") {
       cb(null, "public/images/gallery/");
+    } else if (file.fieldname == "clientImage") {
+      cb(null, "public/images/clients");
     } else {
       cb(null, "public/images/");
     }
@@ -82,7 +85,7 @@ loginRoute.get("/dashboard", verify, (req, res) => {
   Bookings.find((err, result) => {
     if (err) {
       req.flash("message", err);
-      res.redirect("/login/dashboard");
+      res.redirect(req.header.referer);
     } else {
       res.render("dashboard", {
         result: result,
@@ -111,7 +114,7 @@ loginRoute.get("/enquiry", verify, (req, res) => {
   Enquiry.find((err, result) => {
     if (err) {
       req.flash("message", err);
-      res.redirect("/login/enquiry");
+      res.redirect(req.headers.referer);
     } else {
       res.render("dashboard-enquiry", {
         result: result,
@@ -140,7 +143,7 @@ loginRoute.get("/packages", verify, (req, res) => {
   Packages.find((err, result) => {
     if (err) {
       req.flash("message", err);
-      res.redirect("/login/packages");
+      res.redirect(req.headers.referer);
     }
     if (result) {
       res.render("packages", {
@@ -205,7 +208,7 @@ loginRoute.get("/gallery", verify, (req, res) => {
   Gallery.find((err, result) => {
     if (err) {
       req.flash("message", err);
-      res.redirect("/login/gallery");
+      res.redirect(req.headers.referer);
     }
     if (result) {
       res.render("dashboard-gallery", {
@@ -267,6 +270,82 @@ loginRoute.delete("/gallery/:id", verify, (req, res) => {
             res.redirect("/login/gallery");
           } else {
             res.redirect("/login/gallery");
+          }
+        }
+      );
+    }
+  });
+});
+
+// ================LOGIN/CLIENTS=====================//
+
+loginRoute.get("/clients", verify, (req, res) => {
+  Client.find((err, result) => {
+    if (err) {
+      req.flash("message", err);
+      res.redirect(req.headers.referer);
+    }
+    if (result) {
+      res.render("dashboard-clients", {
+        message: req.flash("message"),
+        result: result
+      });
+    }
+  });
+});
+
+loginRoute.post(
+  "/clients",
+  verify,
+  upload.single("clientImage"),
+  (req, res) => {
+    const client = new Client({
+      name: req.body.name,
+      title: req.body.title
+    });
+    if (req.file && req.file.path) {
+      client.image = req.file.originalname;
+    }
+
+    client.save((err, result) => {
+      if (err) {
+        req.flash("message", err);
+        res.redirect("/login/clients");
+      }
+      if (result) {
+        req.flash("message", "Saved successfully");
+        res.redirect("/login/clients");
+      }
+    });
+  }
+);
+
+loginRoute.delete("/clients/:id", verify, (req, res) => {
+  Client.findOneAndDelete({ _id: req.params.id }, (err, result) => {
+    if (err) {
+      req.flash("message", err);
+      res.redirect("/login/clients");
+    }
+    if (!result) {
+      req.flash("message", "No data with requested id");
+      res.redirect("/login/clients");
+    }
+    if (result) {
+      req.flash("message", "Data deleted successfully");
+      fs.unlink(
+        path.join(
+          __dirname,
+          "..",
+          "public",
+          "images",
+          "clients",
+          `${result.image}`
+        ),
+        err => {
+          if (err) {
+            res.redirect("/login/clients");
+          } else {
+            res.redirect("/login/clients");
           }
         }
       );

@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const bookingSchema = Schema(
   {
+    bookingTime: { type: Date, default: Date.now },
     name: { type: String, required: true },
     phone: { type: Number, required: true },
     person: { type: Number, required: true },

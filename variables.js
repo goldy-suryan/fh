@@ -95,36 +95,4 @@ const indexOffers = [
     ]
   }
 ];
-const testimonials = [
-  {
-    url: "test_1",
-    name: "Anil",
-    title: "Best Holiday",
-    image: "backpack"
-  },
-  {
-    url: "test_8",
-    name: "Arnab Biswas",
-    title: "Enjoyed a lot",
-    image: "kayak"
-  },
-  {
-    url: "test_3",
-    name: "Surender Aggarwal",
-    title: "Best travel agency",
-    image: "island_t"
-  },
-  {
-    url: "test_7",
-    name: "Rohit",
-    title: "Having fun",
-    image: "backpack"
-  },
-  {
-    url: "test_5",
-    name: "Tarun Aggarwal",
-    title: "Enjoyed with fantastic holiday",
-    image: "kayak"
-  }
-];
-module.exports = { intro, cta, indexOffers, testimonials };
+module.exports = { intro, cta, indexOffers };
