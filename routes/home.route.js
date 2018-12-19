@@ -9,7 +9,6 @@ homeRoute.get("/", (req, res) => {
       req.flash("message", err);
     }
     if (result) {
-      console.log(result, "result index");
       res.render("index", {
         intro: variables.intro,
         cta: variables.cta,
