@@ -144,6 +144,7 @@
                 <div class="row offers_items">
 
                     <!-- Offers Item -->
+                    <%if(offers) {%>
                     <%for(var i = 0; i < offers.length; i++){%>
                     <div class="col-lg-6 offers_col">
                         <div class="offers_item">
@@ -184,7 +185,7 @@
                         </div>
                     </div>
                     <%}%>
-
+                    <%}%>
                 </div>
             </div>
 	    </div>
