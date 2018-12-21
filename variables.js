@@ -1,8 +1,8 @@
 const intro = [
   {
-    url: "kashmir",
+    url: "manali",
     date: "May 25th - June 01st",
-    title: "Kashmir",
+    title: "Manali",
     price: 1450,
     rating: 4
   },
@@ -38,61 +38,4 @@ const cta = [
       "Goa, the smallest Indian state and much-loved tourist place of India, is situated in the coastal Konkan region and on the bank of Arabian Sea which forms its western coast. Beaches in Goa are the best part of the excellence list of the beach state, where you can rejuvenate yourself."
   }
 ];
-const indexOffers = [
-  {
-    url: "nanital",
-    price: "7999/-",
-    title: "Nanital",
-    person: "person",
-    list: [
-      "2 Nights Stay In 3 Star Hotel",
-      "Volvo Ac Bus Transfers",
-      "2 Breakfast + 2 Dinner",
-      "2 Nightstay In Nanital",
-      "Nanital Lake",
-      "Naina Devi Temple"
-    ]
-  },
-  {
-    url: "manail",
-    price: "6999/-",
-    title: "Manali",
-    person: "person",
-    list: [
-      "03 Nights 04 Days",
-      "Delhi to Delhi Volvo ticket",
-      "3 Nights stay Manali",
-      "Breakfast and Dinner",
-      "Bus stand pick Up & Drop",
-      "All Sightseeing"
-    ]
-  },
-  {
-    url: "golden",
-    price: "19999/-",
-    title: "Delhi-Agra-Jaipur",
-    person: "couple",
-    list: [
-      "3 Nights Stay In 3 Star Property",
-      "Ac Cabs For Full Trip + Sight Seeing ( Delhi - Agra - Jaipur -Delhi)",
-      "1 Night In Delhi",
-      "1 Night In Agra",
-      "1 Night In Jaipur",
-      "3 Breakfast"
-    ]
-  },
-  {
-    url: "goa",
-    price: "13999/-",
-    title: "Goa",
-    person: "person",
-    list: [
-      "3 Nights Stay In 3 Star Property",
-      "Welcome Soft Drink On Arrival",
-      "Return Air Ticket Delhi - Goa - Delhi",
-      "Well Accommodation Ac Rooms With Pool View Facing",
-      "03 Breakfast 03 Dinner"
-    ]
-  }
-];
-module.exports = { intro, cta, indexOffers };
+module.exports = { intro, cta };
