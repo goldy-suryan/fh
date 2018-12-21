@@ -5,26 +5,23 @@ const express = require("express"),
 const Packages = require("../models/packages");
 
 homeRoute.get("/", (req, res) => {
-  var offers;
-  Packages.find((err, result) => {
-    if (err) {
-      req.flash("message", err);
-    }
-    if (result) {
-      offers = result.slice(0, 4);
-    }
-  });
   client.find((err, result) => {
     if (err) {
       req.flash("message", err);
     }
     if (result) {
-      res.render("index", {
-        intro: variables.intro,
-        cta: variables.cta,
-        offers: offers,
-        testimonials: result,
-        message: req.flash("info")
+      Packages.find((err, response) => {
+        if (err) {
+          req.flash("message", err);
+        } else {
+          res.render("index", {
+            intro: variables.intro,
+            cta: variables.cta,
+            offers: response.slice(0, 4),
+            testimonials: result,
+            message: req.flash("info")
+          });
+        }
       });
     }
   });
